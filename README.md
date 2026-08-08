@@ -1,2 +1,2 @@
-# ToDo Web Application (backend ready / frontend IN PROGRESS)
+# ToDo Web Application (IN PROGRESS)
 
