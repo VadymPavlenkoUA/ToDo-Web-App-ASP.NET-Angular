@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TodoApp.API/TodoApp.API.csproj" />
+  <Project Path="TodoApp.DataAccess/TodoApp.DataAccess.csproj" />
+  <Project Path="TodoApp.Services/TodoApp.Services.csproj" />
+</Solution>
