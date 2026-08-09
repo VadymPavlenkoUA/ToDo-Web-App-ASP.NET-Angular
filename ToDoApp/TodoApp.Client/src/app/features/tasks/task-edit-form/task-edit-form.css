@@ -1,0 +1,54 @@
+.edit-task-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.edit-task-card h4 {
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control,
+.form-select {
+  border-radius: 8px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.form-check-input {
+  cursor: pointer;
+}
+
+.form-check-label {
+  cursor: pointer;
+}
+
+.form-text {
+  font-size: 0.8rem;
+}
+
+.alert {
+  border-radius: 8px;
+}
+
+@media (max-width: 576px) {
+  .edit-task-card {
+    padding: 18px;
+  }
+
+  .d-flex.justify-content-end {
+    flex-direction: column-reverse;
+  }
+
+  .d-flex.justify-content-end button {
+    width: 100%;
+  }
+}

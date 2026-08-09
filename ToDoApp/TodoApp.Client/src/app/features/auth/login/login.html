@@ -1,0 +1,78 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <span class="brand-icon">✓</span>
+      <span>Taskly</span>
+    </div>
+
+    <h2>Welcome back</h2>
+
+    <p class="auth-subtitle">
+      Sign in to manage your tasks
+    </p>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          [(ngModel)]="loginRequest.email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="loginRequest.password"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary auth-button"
+        [disabled]="isLoading"
+      >
+        @if (isLoading) {
+          Signing in...
+        } @else {
+          Sign In
+        }
+      </button>
+
+    </form>
+
+    <div class="auth-footer">
+      <span>Don't have an account?</span>
+
+      <a routerLink="/register">
+        Create an account
+      </a>
+    </div>
+
+  </div>
+</div>

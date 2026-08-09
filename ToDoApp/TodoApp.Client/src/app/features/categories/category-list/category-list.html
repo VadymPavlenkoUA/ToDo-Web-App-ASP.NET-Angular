@@ -1,0 +1,235 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+      <h2 class="mb-1">Categories</h2>
+      <p class="text-muted mb-0">
+        Organize your tasks into categories.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="openForm()"
+      [disabled]="showForm || isSaving"
+    >
+      Add Category
+    </button>
+  </div>
+
+  @if (showForm) {
+    <div class="category-form-card mb-4">
+
+      <div class="mb-4">
+        <h4 class="mb-1">New Category</h4>
+        <p class="text-muted mb-0">
+          Create a category for your tasks.
+        </p>
+      </div>
+
+      @if (errorMessage) {
+        <div class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <form (ngSubmit)="createCategory()">
+
+        <div class="mb-3">
+          <label
+            for="categoryName"
+            class="form-label"
+          >
+            Name <span class="text-danger">*</span>
+          </label>
+
+          <input
+            id="categoryName"
+            type="text"
+            class="form-control"
+            name="categoryName"
+            [(ngModel)]="categoryName"
+            placeholder="Enter category name"
+            maxlength="50"
+            autocomplete="off"
+          />
+
+          <div class="form-text">
+            {{ categoryName.length }}/50 characters
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-end gap-2">
+
+          <button
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="closeForm()"
+            [disabled]="isSaving"
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="isSaving"
+          >
+            @if (isSaving) {
+              <span
+                class="spinner-border spinner-border-sm me-2"
+                aria-hidden="true"
+              ></span>
+              Creating...
+            } @else {
+              Create Category
+            }
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="text-center py-4">
+      <div
+        class="spinner-border text-primary"
+        role="status"
+      >
+        <span class="visually-hidden">
+          Loading...
+        </span>
+      </div>
+
+      <p class="text-muted mt-2 mb-0">
+        Loading categories...
+      </p>
+    </div>
+  }
+
+  @if (errorMessage && !showForm) {
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && !errorMessage && categories.length === 0) {
+    <div class="empty-state alert alert-info">
+      <h5>No categories yet</h5>
+      <p class="mb-0">
+        Create your first category to organize your tasks.
+      </p>
+    </div>
+  }
+
+  @if (!isLoading && categories.length > 0) {
+
+    <div class="category-list">
+
+      @for (category of categories; track category.id) {
+
+        <div class="category-item">
+
+          @if (editingCategoryId === category.id) {
+
+            <form
+              class="edit-category-form"
+              (ngSubmit)="updateCategory()"
+            >
+
+              <div class="flex-grow-1">
+
+                <label
+                  [for]="'edit-category-' + category.id"
+                  class="visually-hidden"
+                >
+                  Category name
+                </label>
+
+                <input
+                  [id]="'edit-category-' + category.id"
+                  type="text"
+                  class="form-control"
+                  name="editingCategoryName"
+                  [(ngModel)]="editingCategoryName"
+                  maxlength="50"
+                  autocomplete="off"
+                />
+
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-sm btn-primary"
+                [disabled]="isSaving"
+              >
+                @if (isSaving) {
+                  <span
+                    class="spinner-border spinner-border-sm"
+                    aria-hidden="true"
+                  ></span>
+                } @else {
+                  Save
+                }
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-secondary"
+                (click)="cancelEdit()"
+                [disabled]="isSaving"
+              >
+                Cancel
+              </button>
+
+            </form>
+
+          } @else {
+
+            <div class="d-flex justify-content-between align-items-center">
+
+              <div class="category-info">
+                <span class="category-name">
+                  {{ category.name }}
+                </span>
+              </div>
+
+              <div class="category-actions">
+
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-primary me-2"
+                  (click)="startEdit(category)"
+                  [disabled]="isSaving"
+                >
+                  Edit
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="deleteCategory(category)"
+                  [disabled]="isSaving"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+  }
+
+</div>

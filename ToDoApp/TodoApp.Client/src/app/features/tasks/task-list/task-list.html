@@ -1,0 +1,219 @@
+<div class="container mt-4">
+
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>My Tasks</h2>
+
+    <button class="btn btn-primary" (click)="openForm()">
+        Add Task
+    </button>
+  </div>
+  
+  <div class="row mb-4">
+
+    <div class="col-md-6">
+      <label for="search" class="form-label">
+        Search
+      </label>
+
+      <input
+        id="search"
+        type="text"
+        class="form-control"
+        [(ngModel)]="search"
+        (keyup.enter)="onSearch()"
+        placeholder="Search tasks..."
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label for="categoryFilter" class="form-label">
+        Category
+      </label>
+
+      <select
+        id="categoryFilter"
+        class="form-select"
+        [(ngModel)]="selectedCategoryId"
+        (change)="onSearch()"
+      >
+        <option [ngValue]="null">
+          All categories
+        </option>
+
+        @for (category of categories; track category.id) {
+          <option [ngValue]="category.id">
+            {{ category.name }}
+          </option>
+        }
+      </select>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="button" class="btn btn-outline-secondary w-100"
+        (click)="search = ''; selectedCategoryId = null; pageNumber = 1; loadTasks()"
+      >
+        Clear
+      </button>
+    </div>
+
+  </div>
+
+  @if (showForm) {
+    <div class="mb-4">
+        <app-task-form
+        (taskCreated)="onTaskCreated()"
+        (cancelled)="closeForm()"
+        ></app-task-form>
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="text-center">
+      <p>Loading tasks...</p>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!isLoading && !errorMessage && tasks.length === 0) {
+    <div class="alert alert-info">
+      You don't have any tasks yet.
+    </div>
+  }
+
+  @if (!isLoading && tasks.length > 0) {
+    <div class="list-group">
+
+      @for (task of tasks; track task.id) {
+
+        <div class="list-group-item">
+
+          @if (editingTaskId === task.id) {
+
+            <app-task-edit-form
+              [task]="task"
+              (taskUpdated)="onTaskUpdated()"
+              (cancelled)="cancelEdit()"
+            ></app-task-edit-form>
+
+          } @else {
+
+            <div class="d-flex justify-content-between flex-wrap">
+
+              <div class="flex-grow-1">
+
+                <h5
+                  class="mb-1"
+                  [class.text-decoration-line-through]="task.isCompleted"
+                  [class.text-muted]="task.isCompleted"
+                >
+                  {{ task.title }}
+                </h5>
+
+                @if (task.description) {
+                  <p class="mb-1">
+                    {{ task.description }}
+                  </p>
+                }
+
+                <div class="task-meta">
+
+                  @if (task.categoryName) {
+                    <span class="task-category">
+                      {{ task.categoryName }}
+                    </span>
+                  }
+
+                  @if (task.dueDate) {
+                    <span class="task-due-date">
+                      Due: {{ task.dueDate | date:'medium' }}
+                    </span>
+                  }
+
+                </div>
+
+              </div>
+
+              <div class="task-actions text-end">
+
+                <div class="mb-2">
+
+                  <button
+                    type="button"
+                    class="btn btn-sm"
+                    [class.btn-success]="task.isCompleted"
+                    [class.btn-outline-secondary]="!task.isCompleted"
+                    (click)="toggleCompleted(task)"
+                  >
+                    @if (task.isCompleted) {
+                      ✓ Completed
+                    } @else {
+                      Mark as completed
+                    }
+                  </button>
+
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-primary me-2"
+                  (click)="startEdit(task)"
+                >
+                  Edit
+                </button>
+
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-danger"
+                  (click)="deleteTask(task)"
+                >
+                  Delete
+                </button>
+
+              </div>
+
+            </div>
+
+          }
+
+        </div>
+
+      }
+
+    </div>
+
+    @if (totalPages > 1) {
+
+      <div class="d-flex justify-content-center align-items-center mt-4 gap-3">
+
+        <button
+          class="btn btn-outline-primary"
+          (click)="previousPage()"
+          [disabled]="pageNumber === 1 || isLoading"
+        >
+          Previous
+        </button>
+
+        <span>
+          Page {{ pageNumber }} of {{ totalPages }}
+        </span>
+
+        <button
+          class="btn btn-outline-primary"
+          (click)="nextPage()"
+          [disabled]="pageNumber === totalPages || isLoading"
+        >
+          Next
+        </button>
+
+      </div>
+
+    }
+
+  }
+
+</div>

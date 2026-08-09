@@ -1,0 +1,146 @@
+<div class="edit-task-card">
+
+  <div class="mb-4">
+    <h4 class="mb-1">Edit Task</h4>
+    <p class="text-muted mb-0">
+      Update your task details.
+    </p>
+  </div>
+
+  @if (errorMessage) {
+    <div class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
+  }
+
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <label for="edit-title" class="form-label">
+        Title <span class="text-danger">*</span>
+      </label>
+
+      <input
+        id="edit-title"
+        type="text"
+        class="form-control"
+        name="title"
+        [(ngModel)]="updateRequest.title"
+        maxlength="100"
+        autocomplete="off"
+      />
+
+      <div class="form-text">
+        {{ updateRequest.title.length }}/100 characters
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="edit-description" class="form-label">
+        Description
+      </label>
+
+      <textarea
+        id="edit-description"
+        class="form-control"
+        name="description"
+        rows="4"
+        [(ngModel)]="updateRequest.description"
+        maxlength="1000"
+      ></textarea>
+
+      <div class="form-text">
+        {{ updateRequest.description?.length ?? 0 }}/1000 characters
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <label for="edit-category" class="form-label">
+          Category
+        </label>
+
+        <select
+          id="edit-category"
+          class="form-select"
+          name="categoryId"
+          [(ngModel)]="updateRequest.categoryId"
+        >
+          <option [ngValue]="null">
+            No category
+          </option>
+
+          @for (category of categories; track category.id) {
+            <option [ngValue]="category.id">
+              {{ category.name }}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="edit-dueDate" class="form-label">
+          Due Date
+        </label>
+
+        <input
+          id="edit-dueDate"
+          type="datetime-local"
+          class="form-control"
+          name="dueDate"
+          [(ngModel)]="updateRequest.dueDate"
+        />
+      </div>
+
+    </div>
+
+    <div class="form-check mb-4">
+      <input
+        id="edit-isCompleted"
+        type="checkbox"
+        class="form-check-input"
+        name="isCompleted"
+        [(ngModel)]="updateRequest.isCompleted"
+      />
+
+      <label
+        for="edit-isCompleted"
+        class="form-check-label"
+      >
+        Mark task as completed
+      </label>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2">
+
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        [disabled]="isLoading"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isLoading"
+      >
+        @if (isLoading) {
+          <span
+            class="spinner-border spinner-border-sm me-2"
+            aria-hidden="true"
+          ></span>
+          Saving...
+        } @else {
+          Save Changes
+        }
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

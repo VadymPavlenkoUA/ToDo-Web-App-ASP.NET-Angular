@@ -1,0 +1,78 @@
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-brand">
+      <span class="brand-icon">✓</span>
+      <span>Taskly</span>
+    </div>
+
+    <h2>Create your account</h2>
+
+    <p class="auth-subtitle">
+      Start organizing your tasks today
+    </p>
+
+    @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
+
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="mb-3">
+        <label for="email" class="form-label">
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          [(ngModel)]="registerRequest.email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          [(ngModel)]="registerRequest.password"
+          placeholder="Create a password"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary auth-button"
+        [disabled]="isLoading"
+      >
+        @if (isLoading) {
+          Creating account...
+        } @else {
+          Create Account
+        }
+      </button>
+
+    </form>
+
+    <div class="auth-footer">
+      <span>Already have an account?</span>
+
+      <a routerLink="/login">
+        Sign in
+      </a>
+    </div>
+
+  </div>
+</div>
