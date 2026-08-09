@@ -38,7 +38,7 @@
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/c7422228-fb4b-4118-8912-444cef6be4cd" />
 
-<img width="1000" height="500" alt="Знімок екрана 2026-08-09 200227" src="https://github.com/user-attachments/assets/40b70a5e-a12e-49fb-b38d-e37bdf3cf77d" />
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/1720759f-9db8-4331-be53-c147299e65db" />
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/7ea3feea-4da9-4497-a131-9c735a409d5a" />
 
