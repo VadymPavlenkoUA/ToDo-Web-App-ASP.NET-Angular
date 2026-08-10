@@ -36,7 +36,7 @@
 
 ## IN PROGRESS
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/c7422228-fb4b-4118-8912-444cef6be4cd" />
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/93025ede-0bd4-4de9-a649-a3ead2ac473a" />
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/1720759f-9db8-4331-be53-c147299e65db" />
 
