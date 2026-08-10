@@ -1,4 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TaskService } from '../../../core/services/task';
 import { Task } from '../../../core/models/task.model';
 import { TaskForm } from '../task-form/task-form';
@@ -7,11 +9,13 @@ import { DatePipe } from '@angular/common';
 import { CategoryService } from '../../../core/services/category';
 import { CategoryResponse } from '../../../core/models/category.model';
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../../core/services/toast';
+import { ConfirmModal } from '../../../shared/confirm-modal/confirm-modal';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [TaskForm, TaskEditForm, DatePipe, FormsModule],
+  imports: [TaskForm, TaskEditForm, DatePipe, FormsModule, ConfirmModal],
   templateUrl: './task-list.html',
   styleUrl: './task-list.css'
 })
@@ -32,12 +36,25 @@ export class TaskList implements OnInit {
   pageNumber = 1;
   pageSize = 10;
 
+  private searchSubject = new Subject<string>();
+
+  taskToDelete: Task | null = null;
+
   constructor(private taskService: TaskService, private categoryService: CategoryService, 
-    private cdr: ChangeDetectorRef) {}
+    private cdr: ChangeDetectorRef, private toastService: ToastService) {}
 
   ngOnInit(): void {
     this.loadCategories();
     this.loadTasks();
+
+    this.searchSubject
+      .pipe(
+        debounceTime(500)
+      )
+      .subscribe(() => {
+        this.pageNumber = 1;
+        this.loadTasks();
+      });
   }
 
   loadTasks(): void {
@@ -104,10 +121,23 @@ export class TaskList implements OnInit {
   onTaskCreated(): void {
     console.log('TASK CREATED EVENT');
     this.showForm = false;
+    this.toastService.success('Task created successfully.');
     this.loadTasks();
   }
 
   onSearch(): void {
+    this.isLoading = true;
+    this.searchSubject.next(this.search);
+    this.cdr.detectChanges();
+  }
+
+  onCategoryChange(): void {
+    this.pageNumber = 1;
+    this.loadTasks();
+    this.cdr.detectChanges();
+  }
+
+  searchImmediately(): void {
     this.pageNumber = 1;
     this.loadTasks();
   }
@@ -122,6 +152,7 @@ export class TaskList implements OnInit {
 
   onTaskUpdated(): void {
     this.editingTaskId = null;
+    this.toastService.success('Task updated successfully.');
     this.loadTasks();
   }
 
@@ -147,26 +178,38 @@ export class TaskList implements OnInit {
   }
 
   deleteTask(task: Task): void {
-    const confirmed = confirm(
-      `Are you sure you want to delete "${task.title}"?`
-    );
+    this.taskToDelete = task;
+  }
 
-    if (!confirmed) {
+  confirmDeleteTask(): void {
+    if (!this.taskToDelete) {
       return;
     }
 
-    this.errorMessage = '';
+    const task = this.taskToDelete;
 
     this.taskService.delete(task.id).subscribe({
       next: () => {
+        this.taskToDelete = null;
+
+        this.toastService.success(
+          'Task deleted successfully.'
+        );
+
         this.loadTasks();
       },
 
       error: error => {
         console.error(error);
 
+        this.taskToDelete = null;
+
         this.errorMessage =
           error.error?.message ?? 'Failed to delete task.';
+
+        this.toastService.error(
+          'Failed to delete task.'
+        );
 
         this.cdr.detectChanges();
       }
@@ -197,5 +240,38 @@ export class TaskList implements OnInit {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  get visiblePages(): (number | '...')[] {
+    const pages: (number | '...')[] = []; 
+    const total = this.totalPages;
+    const current = this.pageNumber;
+
+    if (total <= 7) {
+      for (let i = 1; i <= total; i++) pages.push(i);
+      return pages;
+    }
+
+    pages.push(1);
+
+    if (current > 3) pages.push('...');
+
+    const start = Math.max(2, current - 1);
+    const end = Math.min(total - 1, current + 1);
+    for (let i = start; i <= end; i++) pages.push(i);
+
+    if (current < total - 2) pages.push('...');
+
+    pages.push(total);
+
+    return pages;
+  }
+
+  goToFirstPage(): void {
+    this.goToPage(1);
+  }
+
+  goToLastPage(): void {
+    this.goToPage(this.totalPages);
   }
 }

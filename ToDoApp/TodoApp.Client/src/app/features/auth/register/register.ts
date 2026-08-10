@@ -19,8 +19,12 @@ export class Register {
     password: ''
   };
 
+  confirmPassword = '';
+
   errorMessage = '';
   isLoading = false;
+
+  showPassword = false;
 
   constructor(
     private authService: AuthService,
@@ -31,6 +35,18 @@ export class Register {
   onSubmit(): void {
     if (!this.registerRequest.email || !this.registerRequest.password) {
       this.errorMessage = 'Please enter your email and password.';
+      return;
+    }
+
+    if (this.registerRequest.password !== this.confirmPassword) {
+      this.errorMessage = 'Passwords do not match.';
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(this.registerRequest.email)) {
+      this.errorMessage = 'Please enter a valid email address.';
       return;
     }
 
@@ -53,5 +69,9 @@ export class Register {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

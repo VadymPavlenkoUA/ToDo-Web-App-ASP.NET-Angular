@@ -22,6 +22,8 @@ export class Login {
   errorMessage = '';
   isLoading = false;
 
+  showPassword = false;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -31,6 +33,13 @@ export class Login {
   onSubmit(): void {
     if (!this.loginRequest.email || !this.loginRequest.password) {
       this.errorMessage = 'Please enter your email and password.';
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(this.loginRequest.email)) {
+      this.errorMessage = 'Please enter a valid email address.';
       return;
     }
 
@@ -53,5 +62,9 @@ export class Login {
         this.cdr.detectChanges();
       }
     });
+  }
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
   }
 }

@@ -1,18 +1,14 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  OnInit
-} from '@angular/core';
-
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { CategoryService } from '../../../core/services/category';
 import { CategoryResponse } from '../../../core/models/category.model';
-
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../../../core/services/toast';
+import { ConfirmModal } from '../../../shared/confirm-modal/confirm-modal';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ConfirmModal],
   templateUrl: './category-list.html',
   styleUrl: './category-list.css'
 })
@@ -30,9 +26,12 @@ export class CategoryList implements OnInit {
   editingCategoryId: number | null = null;
   editingCategoryName = '';
 
+  categoryToDelete: CategoryResponse | null = null;
+
   constructor(
     private categoryService: CategoryService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -89,6 +88,8 @@ export class CategoryList implements OnInit {
         this.isSaving = false;
         this.showForm = false;
         this.categoryName = '';
+
+        this.toastService.success('Category created successfully.');
 
         this.loadCategories();
       },
@@ -148,6 +149,8 @@ export class CategoryList implements OnInit {
         this.editingCategoryId = null;
         this.editingCategoryName = '';
 
+        this.toastService.success('Category updated successfully.');
+
         this.loadCategories();
       },
 
@@ -164,30 +167,39 @@ export class CategoryList implements OnInit {
   }
 
   deleteCategory(category: CategoryResponse): void {
-    const confirmed = confirm(
-      `Are you sure you want to delete "${category.name}"?`
-    );
+    this.categoryToDelete = category;
+  }
 
-    if (!confirmed) {
+  confirmDeleteCategory(): void {
+    if (!this.categoryToDelete) {
       return;
     }
 
-    this.errorMessage = '';
-    this.isSaving = true;
+    const category = this.categoryToDelete;
 
     this.categoryService.deleteCategory(category.id).subscribe({
       next: () => {
-        this.isSaving = false;
+        this.categoryToDelete = null;
+
+        this.toastService.success(
+          'Category deleted successfully.'
+        );
+
         this.loadCategories();
       },
 
       error: error => {
         console.error(error);
 
+        this.categoryToDelete = null;
+
         this.errorMessage =
           error.error?.message ?? 'Failed to delete category.';
 
-        this.isSaving = false;
+        this.toastService.error(
+          'Failed to delete category.'
+        );
+
         this.cdr.detectChanges();
       }
     });

@@ -2,9 +2,9 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-      <h2 class="mb-1">Categories</h2>
+      <h2 class="category-title mb-1">Categories</h2>
       <p class="text-muted mb-0">
-        Organize your tasks into categories.
+        Organize your tasks into categories
       </p>
     </div>
 
@@ -96,10 +96,7 @@
 
   @if (isLoading) {
     <div class="text-center py-4">
-      <div
-        class="spinner-border text-primary"
-        role="status"
-      >
+      <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">
           Loading...
         </span>
@@ -121,7 +118,7 @@
     <div class="empty-state alert alert-info">
       <h5>No categories yet</h5>
       <p class="mb-0">
-        Create your first category to organize your tasks.
+        Create your first category to organize your tasks
       </p>
     </div>
   }
@@ -229,6 +226,18 @@
       }
 
     </div>
+
+  }
+
+  @if (categoryToDelete) {
+
+    <app-confirm-modal
+      title="Delete Category"
+      [message]="'Are you sure you want to delete &quot;' + categoryToDelete.name + '&quot;?'"
+      confirmText="Delete"
+      (confirmed)="confirmDeleteCategory()"
+      (cancelled)="categoryToDelete = null"
+    ></app-confirm-modal>
 
   }
 
