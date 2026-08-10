@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive} from '@angular/router';
 import { AuthService } from '../../core/services/auth';
 import { ConfirmModal } from '../confirm-modal/confirm-modal';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, ConfirmModal],
+  imports: [RouterLink, RouterLinkActive, ConfirmModal],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })

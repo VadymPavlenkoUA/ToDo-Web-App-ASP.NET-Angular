@@ -142,7 +142,7 @@
         <h4>No tasks yet</h4>
 
         <p class="text-muted mb-3">
-          Create your first task to get started.
+          Create your first task to get started
         </p>
 
         <button
@@ -202,9 +202,21 @@
                     </span>
                   }
 
-                  @if (task.dueDate) {
+                  <!-- @if (task.dueDate) {
                     <span class="task-due-date">
                       Due: {{ task.dueDate | date:'medium' }}
+                    </span>
+                  } -->
+
+                  @if (task.dueDate) {
+                    <span class="task-due-date" [class.task-due-date-overdue]="isOverdue(task)">
+                      
+                      @if (isOverdue(task)) {
+                        <i class="bi bi-exclamation-circle"></i>
+                      }
+
+                      Due: {{ task.dueDate | date:'medium' }}
+
                     </span>
                   }
 

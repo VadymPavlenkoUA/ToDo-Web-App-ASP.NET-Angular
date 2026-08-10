@@ -41,14 +41,26 @@
   color: #6c757d;
 }
 
+.task-due-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding-top: 4px;
+}
+
+.task-due-date-overdue {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.task-due-date-overdue i {
+  font-size: 0.9rem;
+}
+
 .task-category {
   background-color: #f1f3f5;
   padding: 4px 9px;
   border-radius: 6px;
-}
-
-.task-due-date {
-  padding-top: 4px;
 }
 
 .task-actions {

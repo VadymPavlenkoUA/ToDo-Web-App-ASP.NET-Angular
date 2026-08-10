@@ -242,6 +242,13 @@ export class TaskList implements OnInit {
     });
   }
 
+  isOverdue(task: Task): boolean {
+    if (!task.dueDate || task.isCompleted) {
+      return false;
+    }
+    return new Date(task.dueDate) < new Date();
+  }
+
   get visiblePages(): (number | '...')[] {
     const pages: (number | '...')[] = []; 
     const total = this.totalPages;
