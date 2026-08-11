@@ -83,13 +83,13 @@ This is a full-stack task management application which allows users to manage pe
 
 *Screenshots demonstrate the main application pages and user interface*
 
-# Getting Started
+## Getting Started
 ### Prerequisites
 Make sure you have the following installed:
- * .NET 10 SDK
- * Node.js
- * Angular CLI
- * Microsoft SQL Server (used by the application)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js](https://nodejs.org/)
+- [Angular CLI](https://angular.dev/tools/cli)
+- [Microsoft SQL Server](https://www.microsoft.com/en-us/sql-server)
 
 ## API
 The backend provides RESTful endpoints for authentication, tasks and categories
