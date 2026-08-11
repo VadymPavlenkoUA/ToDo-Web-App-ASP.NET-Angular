@@ -144,7 +144,7 @@ The API will start on the configured local URL.
 Open a new terminal and navigate to the Angular project:
 
 ```bash
-cd ToDo-Web-App-ASP.NET-Angular\ToDoApp\TodoApp.Client
+cd ../TodoApp.Client
 npm install
 ng serve
 ```
