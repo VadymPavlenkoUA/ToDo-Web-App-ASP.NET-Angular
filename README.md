@@ -83,7 +83,7 @@ This is a full-stack task management application which allows users to manage pe
 
 *Screenshots demonstrate the main application pages and user interface*
 
-## Getting Started
+# Getting Started
 ### Prerequisites
 Make sure you have the following installed:
  * .NET 10 SDK
