@@ -96,7 +96,7 @@ Make sure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone [https://github.com/your-username/your-repository.git](https://github.com/VadymPavlenkoUA/ToDo-Web-App-ASP.NET-Angular.git)
+git clone https://github.com/VadymPavlenkoUA/ToDo-Web-App-ASP.NET-Angular.git
 cd your-repository
 ```
 
