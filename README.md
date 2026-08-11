@@ -119,9 +119,9 @@ Make sure your SQL Server instance is running.
 Navigate to the backend project directory and run:
 
 ```bash
-cd <repository-root>/ToDoApp/ToDoApp.API
+cd <repository-root>/ToDoApp
 dotnet tool install --global dotnet-ef
-dotnet ef database update
+dotnet ef database update --project TodoApp.DataAccess --startup-project TodoApp.API
 ```
 
 This will create the required database and apply all Entity Framework Core migrations.
