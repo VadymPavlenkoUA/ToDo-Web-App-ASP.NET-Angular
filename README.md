@@ -91,7 +91,7 @@ Make sure you have the following installed:
 * [Angular CLI](https://angular.dev/tools/cli)
 * [Microsoft SQL Server (used by the application)](https://www.microsoft.com/en-us/sql-server)
 
-> **Note:** SQL Server Express is sufficient for running this project locally.
+> **Note:** SQL Server Express is sufficient for running this project locally
 
 ### 1. Clone the repository
 
