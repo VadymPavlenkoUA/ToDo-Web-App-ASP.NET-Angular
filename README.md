@@ -71,7 +71,7 @@ This is a full-stack task management application which allows users to manage pe
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6d9fc847-d7a2-4654-8f46-d926f98d04f2" />
 
-`*Screenshots demonstrate the main application pages and user interface*`
+`Screenshots demonstrate the main application pages and user interface`
 
 ## API
 The backend provides RESTful endpoints for authentication, tasks and categories
