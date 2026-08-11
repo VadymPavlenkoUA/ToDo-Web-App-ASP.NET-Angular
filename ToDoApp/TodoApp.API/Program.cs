@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 using System.Text;
-using Microsoft.EntityFrameworkCore;
 using TodoApp.DataAccess.Context;
 using TodoApp.DataAccess.Interfaces;
 using TodoApp.DataAccess.Repositories;

@@ -2,8 +2,6 @@
 using TodoApp.Services.DTOs.Auth;
 using TodoApp.Services.Interfaces;
 
-
-
 namespace TodoApp.API.Controllers
 {
     [ApiController]

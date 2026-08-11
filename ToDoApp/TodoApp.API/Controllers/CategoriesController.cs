@@ -1,10 +1,8 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TodoApp.Services.DTOs.Categories;
 using TodoApp.Services.Interfaces;
-
-
 
 namespace TodoApp.API.Controllers
 {
@@ -24,7 +22,6 @@ namespace TodoApp.API.Controllers
         public async Task<ActionResult<IEnumerable<CategoryResponse>>> GetAll()
         {
             var userId = GetUserId();
-
             var categories = await _categoryService.GetAllAsync(userId);
 
             return Ok(categories);
@@ -34,7 +31,6 @@ namespace TodoApp.API.Controllers
         public async Task<ActionResult<CategoryResponse>> GetById(int id)
         {
             var userId = GetUserId();
-
             var category = await _categoryService.GetByIdAsync(id, userId);
 
             if (category is null)
@@ -49,7 +45,6 @@ namespace TodoApp.API.Controllers
         public async Task<ActionResult<CategoryResponse>> Create(CreateCategoryRequest request)
         {
             var userId = GetUserId();
-
             var category = await _categoryService.CreateAsync(request, userId);
 
             return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
@@ -59,7 +54,6 @@ namespace TodoApp.API.Controllers
         public async Task<IActionResult> Update(int id, UpdateCategoryRequest request)
         {
             var userId = GetUserId();
-
             var updated = await _categoryService.UpdateAsync(id, request, userId);
 
             if (!updated)
@@ -74,7 +68,6 @@ namespace TodoApp.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var userId = GetUserId();
-
             var deleted = await _categoryService.DeleteAsync(id, userId);
 
             if (!deleted)

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TodoApp.DataAccess.Context;
 using TodoApp.DataAccess.Entities;
 using TodoApp.DataAccess.Interfaces;
@@ -31,6 +28,7 @@ namespace TodoApp.DataAccess.Repositories
         {
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
+
             return user;
         }
     }

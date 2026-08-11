@@ -10,17 +10,20 @@ import { ConfirmModal } from '../confirm-modal/confirm-modal';
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
-export class Navbar {
+export class Navbar 
+{
 
   showLogoutModal = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  logout(): void {
+  logout(): void 
+  {
     this.showLogoutModal = true;
   }
 
-  confirmLogout(): void {
+  confirmLogout(): void 
+  {
     this.showLogoutModal = false;
     this.authService.logout();
     this.router.navigate(['/login']);

@@ -24,26 +24,12 @@
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-
   color: #212529;
 }
 
 .auth-brand i {
   font-size: 2rem;
   color: #0d6efd;
-}
-
-.brand-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: #0d6efd;
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
 }
 
 .auth-card h2 {
@@ -59,19 +45,17 @@
   margin-bottom: 2rem;
 }
 
-.form-label {
-  font-weight: 500;
-  color: #374151;
-}
-
-.form-control {
-  padding: 0.7rem 0.85rem;
-  border-radius: 7px;
-}
-
-.form-control:focus {
-  border-color: #0d6efd;
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #0d6efd;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .auth-button {
@@ -102,6 +86,21 @@
 
 .alert {
   border-radius: 7px;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #374151;
+}
+
+.form-control {
+  padding: 0.7rem 0.85rem;
+  border-radius: 7px;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.12);
 }
 
 .password-field {

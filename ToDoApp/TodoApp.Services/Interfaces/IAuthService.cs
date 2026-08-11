@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TodoApp.Services.DTOs.Auth;
+﻿using TodoApp.Services.DTOs.Auth;
 
 namespace TodoApp.Services.Interfaces
 {

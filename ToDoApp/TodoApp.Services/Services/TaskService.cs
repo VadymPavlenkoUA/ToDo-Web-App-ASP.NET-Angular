@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TodoApp.DataAccess.Entities;
+﻿using TodoApp.DataAccess.Entities;
 using TodoApp.DataAccess.Interfaces;
 using TodoApp.Services.DTOs.Tasks;
 using TodoApp.Services.Interfaces;
@@ -33,7 +30,6 @@ namespace TodoApp.Services.Services
             }
 
             var result = await _taskRepository.GetPagedAsync(userId, search, categoryId, pageNumber, pageSize);
-
             var items = result.Items.Select(task => new TaskResponse
             {
                 Id = task.Id,

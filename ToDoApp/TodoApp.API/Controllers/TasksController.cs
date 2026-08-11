@@ -1,10 +1,8 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using TodoApp.Services.DTOs.Tasks;
 using TodoApp.Services.Interfaces;
-
-
 
 namespace TodoApp.API.Controllers
 {
@@ -21,14 +19,10 @@ namespace TodoApp.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<TaskListResponse>> GetTasks(
-            [FromQuery] string? search,
-            [FromQuery] int? categoryId,
-            [FromQuery] int pageNumber = 1,
-            [FromQuery] int pageSize = 10)
+        public async Task<ActionResult<TaskListResponse>> GetTasks([FromQuery] string? search,
+            [FromQuery] int? categoryId, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
         {
             var userId = GetUserId();
-
             var result = await _taskService.GetTasksAsync(userId, search, categoryId, pageNumber, pageSize);
 
             return Ok(result);
@@ -38,7 +32,6 @@ namespace TodoApp.API.Controllers
         public async Task<ActionResult<TaskResponse>> GetById(int id)
         {
             var userId = GetUserId();
-
             var result = await _taskService.GetByIdAsync(id, userId);
 
             if (result is null)
@@ -50,13 +43,11 @@ namespace TodoApp.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<TaskResponse>> Create(
-            CreateTaskRequest request)
+        public async Task<ActionResult<TaskResponse>> Create(CreateTaskRequest request)
         {
             try
             {
                 var userId = GetUserId();
-
                 var result = await _taskService.CreateAsync(request, userId);
 
                 return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
@@ -76,7 +67,6 @@ namespace TodoApp.API.Controllers
             try
             {
                 var userId = GetUserId();
-
                 var updated = await _taskService.UpdateAsync(id, request, userId);
 
                 if (!updated)
@@ -99,7 +89,6 @@ namespace TodoApp.API.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var userId = GetUserId();
-
             var deleted = await _taskService.DeleteAsync(id, userId);
 
             if (!deleted)

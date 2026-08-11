@@ -1,6 +1,6 @@
 <div class="auth-page">
   <div class="auth-card">
-
+    
     <div class="auth-brand">
       <i class="bi bi-check2-circle"></i>
       <span>Tasko</span>
@@ -12,8 +12,9 @@
       Sign in to manage your tasks
     </p>
 
-    @if (errorMessage) {
-      <div class="alert alert-danger">
+    @if (errorMessage) 
+    {
+      <div class="alert alert-danger" role="alert">
         {{ errorMessage }}
       </div>
     }
@@ -37,11 +38,15 @@
         email
       />
 
-      @if (email.invalid && email.touched) {
+      @if (email.invalid && email.touched) 
+      {
         <div class="text-danger small mt-1">
-          @if (email.errors?.['required']) {
+          @if (email.errors?.['required']) 
+          {
             Email is required.
-          } @else if (email.errors?.['email']) {
+          } 
+          @else if (email.errors?.['email']) 
+          {
             Please enter a valid email address.
           }
         </div>
@@ -74,7 +79,8 @@
         </button>
       </div>
 
-      @if (password.invalid && password.touched) {
+      @if (password.invalid && password.touched)
+      {
         <div class="text-danger small mt-1">
           Password is required.
         </div>
@@ -86,9 +92,12 @@
         class="btn btn-primary auth-button"
         [disabled]="isLoading"
       >
-        @if (isLoading) {
+        @if (isLoading) 
+        {
           Signing in...
-        } @else {
+        } 
+        @else 
+        {
           Sign In
         }
       </button>

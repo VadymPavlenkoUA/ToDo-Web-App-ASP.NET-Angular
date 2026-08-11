@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TodoApp.Services.DTOs.Auth
+﻿namespace TodoApp.Services.DTOs.Auth
 {
     public class RegisterRequest
     {

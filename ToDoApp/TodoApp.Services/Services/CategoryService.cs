@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using TodoApp.DataAccess.Entities;
+﻿using TodoApp.DataAccess.Entities;
 using TodoApp.DataAccess.Interfaces;
 using TodoApp.Services.DTOs.Categories;
 using TodoApp.Services.Interfaces;
@@ -71,7 +68,6 @@ namespace TodoApp.Services.Services
             }
 
             category.Name = request.Name;
-
             await _categoryRepository.UpdateAsync(category);
 
             return true;

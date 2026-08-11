@@ -7,7 +7,8 @@
     </p>
   </div>
 
-  @if (errorMessage) {
+  @if (errorMessage) 
+  {
     <div class="alert alert-danger" role="alert">
       {{ errorMessage }}
     </div>
@@ -71,7 +72,8 @@
             No category
           </option>
 
-          @for (category of categories; track category.id) {
+          @for (category of categories; track category.id) 
+          {
             <option [ngValue]="category.id">
               {{ category.name }}
             </option>
@@ -104,10 +106,7 @@
         [(ngModel)]="updateRequest.isCompleted"
       />
 
-      <label
-        for="edit-isCompleted"
-        class="form-check-label"
-      >
+      <label for="edit-isCompleted" class="form-check-label">
         Mark task as completed
       </label>
     </div>
@@ -128,19 +127,16 @@
         class="btn btn-primary"
         [disabled]="isLoading"
       >
-        @if (isLoading) {
-          <span
-            class="spinner-border spinner-border-sm me-2"
-            aria-hidden="true"
-          ></span>
+        @if (isLoading) 
+        {
+          <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
           Saving...
-        } @else {
+        } 
+        @else 
+        {
           Save Changes
         }
       </button>
-
     </div>
-
   </form>
-
 </div>

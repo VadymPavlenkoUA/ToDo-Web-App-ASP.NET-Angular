@@ -28,8 +28,8 @@
       <span>Logout</span>
     </button>
 
-    @if (showLogoutModal) {
-
+    @if (showLogoutModal) 
+    {
       <app-confirm-modal
         title="Logout"
         message="Are you sure you want to log out?"
@@ -37,7 +37,6 @@
         (confirmed)="confirmLogout()"
         (cancelled)="showLogoutModal = false"
       ></app-confirm-modal>
-      
     }
 
   </div>

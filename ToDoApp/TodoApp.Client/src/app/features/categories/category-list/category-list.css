@@ -14,22 +14,6 @@
   font-weight: 600;
 }
 
-.form-label {
-  font-weight: 500;
-}
-
-.form-control {
-  border-radius: 8px;
-}
-
-.form-control:focus {
-  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
-}
-
-.form-text {
-  font-size: 0.8rem;
-}
-
 .category-list {
   display: flex;
   flex-direction: column;
@@ -55,7 +39,10 @@
 }
 
 .category-actions {
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .category-title {
@@ -63,6 +50,22 @@
   font-weight: 700;
   letter-spacing: -0.5px;
   color: #212529;
+}
+
+.form-label {
+  font-weight: 500;
+}
+
+.form-control {
+  border-radius: 8px;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.15);
+}
+
+.form-text {
+  font-size: 0.8rem;
 }
 
 .edit-category-form {

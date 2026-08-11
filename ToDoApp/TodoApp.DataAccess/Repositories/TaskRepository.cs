@@ -5,7 +5,7 @@ using TodoApp.DataAccess.Interfaces;
 
 namespace TodoApp.DataAccess.Repositories
 {
-    public class TaskRepository: ITaskRepository
+    public class TaskRepository : ITaskRepository
     {
         private readonly TodoDbContext _context;
 
@@ -14,12 +14,8 @@ namespace TodoApp.DataAccess.Repositories
             _context = context;
         }
 
-        public async Task<(IEnumerable<TaskItem> Items, int TotalCount)> GetPagedAsync(
-            int userId,
-            string? search,
-            int? categoryId,
-            int pageNumber,
-            int pageSize)
+        public async Task<(IEnumerable<TaskItem> Items, int TotalCount)> GetPagedAsync(int userId, string? search,
+            int? categoryId, int pageNumber, int pageSize)
         {
             var query = _context.Tasks.AsNoTracking().Where(x => x.UserId == userId);
 
@@ -35,7 +31,6 @@ namespace TodoApp.DataAccess.Repositories
             }
 
             var totalCount = await query.CountAsync();
-
             var items = await query.Include(x => x.Category).OrderByDescending(x => x.CreatedAt)
                 .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
 
@@ -44,10 +39,8 @@ namespace TodoApp.DataAccess.Repositories
 
         public async Task<TaskItem?> GetByIdAsync(int id, int userId)
         {
-            return await _context.Tasks.Include(x => x.Category)
-                .FirstOrDefaultAsync(x =>
-                    x.Id == id &&
-                    x.UserId == userId);
+            return await _context.Tasks.Include(x => x.Category).FirstOrDefaultAsync(x =>
+                    x.Id == id && x.UserId == userId);
         }
 
         public async Task<TaskItem> CreateAsync(TaskItem task)

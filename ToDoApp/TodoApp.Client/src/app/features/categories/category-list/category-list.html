@@ -18,7 +18,8 @@
     </button>
   </div>
 
-  @if (showForm) {
+  @if (showForm) 
+  {
     <div class="category-form-card mb-4">
 
       <div class="mb-4">
@@ -28,7 +29,8 @@
         </p>
       </div>
 
-      @if (errorMessage) {
+      @if (errorMessage) 
+      {
         <div class="alert alert-danger" role="alert">
           {{ errorMessage }}
         </div>
@@ -37,10 +39,7 @@
       <form (ngSubmit)="createCategory()">
 
         <div class="mb-3">
-          <label
-            for="categoryName"
-            class="form-label"
-          >
+          <label for="categoryName" class="form-label">
             Name <span class="text-danger">*</span>
           </label>
 
@@ -76,25 +75,23 @@
             class="btn btn-primary"
             [disabled]="isSaving"
           >
-            @if (isSaving) {
-              <span
-                class="spinner-border spinner-border-sm me-2"
-                aria-hidden="true"
-              ></span>
+            @if (isSaving) 
+            {
+              <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
               Creating...
-            } @else {
+            } 
+            @else 
+            {
               Create Category
             }
           </button>
-
         </div>
-
       </form>
-
     </div>
   }
 
-  @if (isLoading) {
+  @if (isLoading) 
+  {
     <div class="text-center py-4">
       <div class="spinner-border text-primary" role="status">
         <span class="visually-hidden">
@@ -108,13 +105,15 @@
     </div>
   }
 
-  @if (errorMessage && !showForm) {
+  @if (errorMessage && !showForm) 
+  {
     <div class="alert alert-danger" role="alert">
       {{ errorMessage }}
     </div>
   }
 
-  @if (!isLoading && !errorMessage && categories.length === 0) {
+  @if (!isLoading && !errorMessage && categories.length === 0) 
+  {
     <div class="empty-state alert alert-info">
       <h5>No categories yet</h5>
       <p class="mb-0">
@@ -123,27 +122,21 @@
     </div>
   }
 
-  @if (!isLoading && categories.length > 0) {
-
+  @if (!isLoading && categories.length > 0) 
+  {
     <div class="category-list">
 
-      @for (category of categories; track category.id) {
-
+      @for (category of categories; track category.id) 
+      {
         <div class="category-item">
 
-          @if (editingCategoryId === category.id) {
-
-            <form
-              class="edit-category-form"
-              (ngSubmit)="updateCategory()"
-            >
+          @if (editingCategoryId === category.id) 
+          {
+            <form class="edit-category-form" (ngSubmit)="updateCategory()">
 
               <div class="flex-grow-1">
 
-                <label
-                  [for]="'edit-category-' + category.id"
-                  class="visually-hidden"
-                >
+                <label [for]="'edit-category-' + category.id" class="visually-hidden">
                   Category name
                 </label>
 
@@ -159,17 +152,13 @@
 
               </div>
 
-              <button
-                type="submit"
-                class="btn btn-sm btn-primary"
-                [disabled]="isSaving"
-              >
-                @if (isSaving) {
-                  <span
-                    class="spinner-border spinner-border-sm"
-                    aria-hidden="true"
-                  ></span>
-                } @else {
+              <button type="submit" class="btn btn-sm btn-primary" [disabled]="isSaving">
+                @if (isSaving) 
+                {
+                  <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                } 
+                @else 
+                {
                   Save
                 }
               </button>
@@ -185,8 +174,9 @@
 
             </form>
 
-          } @else {
-
+          } 
+          @else 
+          {
             <div class="d-flex justify-content-between align-items-center">
 
               <div class="category-info">
@@ -216,21 +206,15 @@
                 </button>
 
               </div>
-
             </div>
-
           }
-
         </div>
-
       }
-
     </div>
-
   }
 
-  @if (categoryToDelete) {
-
+  @if (categoryToDelete) 
+  {
     <app-confirm-modal
       title="Delete Category"
       [message]="'Are you sure you want to delete &quot;' + categoryToDelete.name + '&quot;?'"
@@ -238,7 +222,5 @@
       (confirmed)="confirmDeleteCategory()"
       (cancelled)="categoryToDelete = null"
     ></app-confirm-modal>
-
   }
-
 </div>

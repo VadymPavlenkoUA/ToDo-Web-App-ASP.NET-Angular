@@ -2,24 +2,16 @@
   position: fixed;
   top: 80px;
   right: 24px;
-
   min-width: 280px;
   max-width: 400px;
-
   padding: 14px 18px;
-
   border-radius: 8px;
-
   display: flex;
   align-items: center;
   gap: 12px;
-
   color: white;
-
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-
   z-index: 9999;
-
   animation: toast-slide-in 0.25s ease-out;
 }
 
@@ -34,25 +26,23 @@
 .toast-icon {
   width: 24px;
   height: 24px;
-
   border-radius: 50%;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: bold;
-
   background-color: rgba(255, 255, 255, 0.2);
 }
 
 @keyframes toast-slide-in {
-  from {
+  from 
+  {
     opacity: 0;
     transform: translateX(30px);
   }
 
-  to {
+  to 
+  {
     opacity: 1;
     transform: translateX(0);
   }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TodoApp.Services.DTOs.Categories
+﻿namespace TodoApp.Services.DTOs.Categories
 {
     public class UpdateCategoryRequest
     {

@@ -1,44 +1,42 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-
 import { AuthService } from '../../../core/services/auth';
 import { LoginRequest } from '../../../core/models/auth.model';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
+  selector: 'app-login', 
+  standalone: true, 
   imports: [FormsModule, RouterLink],
-  templateUrl: './login.html',
-  styleUrl: './login.css'
-})
+  templateUrl: './login.html', 
+  styleUrl: './login.css'})
 export class Login {
 
-  loginRequest: LoginRequest = {
+  loginRequest: LoginRequest = 
+  {
     email: '',
     password: ''
   };
 
   errorMessage = '';
   isLoading = false;
-
   showPassword = false;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-    private cdr: ChangeDetectorRef
-  ) {}
+  constructor(private authService: AuthService, private router: Router,
+    private cdr: ChangeDetectorRef) {}
 
-  onSubmit(): void {
-    if (!this.loginRequest.email || !this.loginRequest.password) {
+  onSubmit(): void 
+  {
+    if (!this.loginRequest.email || !this.loginRequest.password) 
+    {
       this.errorMessage = 'Please enter your email and password.';
       return;
     }
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(this.loginRequest.email)) {
+    if (!emailPattern.test(this.loginRequest.email)) 
+    {
       this.errorMessage = 'Please enter a valid email address.';
       return;
     }
@@ -47,13 +45,16 @@ export class Login {
     this.isLoading = true;
     this.cdr.detectChanges();
 
-    this.authService.login(this.loginRequest).subscribe({
-      next: () => {
+    this.authService.login(this.loginRequest).subscribe(
+    {
+      next: () => 
+      {
         this.isLoading = false;
         this.cdr.detectChanges();
         this.router.navigate(['/tasks']);
       },
-      error: error => {
+      error: error => 
+      {
         this.isLoading = false;
 
         this.errorMessage =
@@ -64,7 +65,8 @@ export class Login {
     });
   }
 
-  togglePassword(): void {
+  togglePassword(): void 
+  {
     this.showPassword = !this.showPassword;
   }
 }

@@ -1,4 +1,5 @@
-export interface Task {
+export interface Task 
+{
   id: number;
   title: string;
   description: string | null;
@@ -9,21 +10,24 @@ export interface Task {
   categoryName: string | null;
 }
 
-export interface TaskListResponse {
+export interface TaskListResponse 
+{
   items: Task[];
   totalCount: number;
   pageNumber: number;
   pageSize: number;
 }
 
-export interface CreateTaskRequest {
+export interface CreateTaskRequest 
+{
   title: string;
   description?: string | null;
   dueDate?: string | null;
   categoryId?: number | null;
 }
 
-export interface UpdateTaskRequest {
+export interface UpdateTaskRequest 
+{
   title: string;
   description?: string | null;
   isCompleted: boolean;

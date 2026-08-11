@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using TodoApp.DataAccess.Entities;
 using TodoApp.DataAccess.Interfaces;
 using TodoApp.Services.Configuration;
@@ -69,10 +67,10 @@ namespace TodoApp.Services.Services
         private AuthResponse GenerateAuthResponse(User user)
         {
             var claims = new List<Claim>
-        {
-            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new(ClaimTypes.Email, user.Email)
-        };
+            {
+                new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new(ClaimTypes.Email, user.Email)
+            };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
 
@@ -80,12 +78,8 @@ namespace TodoApp.Services.Services
 
             var expiration = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationMinutes);
 
-            var token = new JwtSecurityToken(
-                issuer: _jwtSettings.Issuer,
-                audience: _jwtSettings.Audience,
-                claims: claims,
-                expires: expiration,
-                signingCredentials: credentials);
+            var token = new JwtSecurityToken(issuer: _jwtSettings.Issuer, audience: _jwtSettings.Audience,
+                claims: claims, expires: expiration, signingCredentials: credentials);
 
             return new AuthResponse
             {

@@ -52,7 +52,8 @@
           All categories
         </option>
 
-        @for (category of categories; track category.id) {
+        @for (category of categories; track category.id) 
+        {
           <option [ngValue]="category.id">
             {{ category.name }}
           </option>
@@ -62,20 +63,17 @@
 
     <div class="col-md-2 d-flex align-items-end">
       <button type="button" class="btn btn-outline-secondary w-100"
-        (click)="search = ''; selectedCategoryId = null; pageNumber = 1; loadTasks()"
-      >
+        (click)="search = ''; selectedCategoryId = null; pageNumber = 1; loadTasks()">
         Clear
       </button>
     </div>
 
   </div>
 
-  @if (showForm) {
+  @if (showForm) 
+  {
     <div class="mb-4">
-        <app-task-form
-        (taskCreated)="onTaskCreated()"
-        (cancelled)="closeForm()"
-        ></app-task-form>
+        <app-task-form (taskCreated)="onTaskCreated()" (cancelled)="closeForm()"></app-task-form>
     </div>
   }
 
@@ -93,46 +91,43 @@
     </div>
   }
 
-  @if (errorMessage) {
+  @if (errorMessage) 
+  {
     <div class="alert alert-danger">
       {{ errorMessage }}
     </div>
   }
 
-  <!-- @if (!isLoading && !errorMessage && tasks.length === 0) {
-    <div class="alert alert-info">
-      You don't have any tasks yet.
-    </div>
-  } -->
+  @if (!isLoading && !errorMessage && tasks.length === 0) 
+  {
 
-  @if (!isLoading && !errorMessage && tasks.length === 0) {
+    @if (search || selectedCategoryId !== null) 
+    {
+      <div class="empty-state">
 
-  @if (search || selectedCategoryId !== null) {
+        <div class="empty-state-icon">
+          <i class="bi bi-search"></i>
+        </div>
 
-    <div class="empty-state">
+        <h4>No tasks found</h4>
 
-      <div class="empty-state-icon">
-        <i class="bi bi-search"></i>
+        <p class="text-muted mb-3">
+          Try changing your search or category filter.
+        </p>
+
+        <button
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="search = ''; selectedCategoryId = null; pageNumber = 1; loadTasks()"
+        >
+          Clear filters
+        </button>
+
       </div>
 
-      <h4>No tasks found</h4>
-
-      <p class="text-muted mb-3">
-        Try changing your search or category filter.
-      </p>
-
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        (click)="search = ''; selectedCategoryId = null; pageNumber = 1; loadTasks()"
-      >
-        Clear filters
-      </button>
-
-    </div>
-
-    } @else {
-
+    } 
+    @else 
+    {
       <div class="empty-state">
 
         <div class="empty-state-icon">
@@ -159,23 +154,25 @@
 
   }
 
-  @if (!isLoading && tasks.length > 0) {
+  @if (!isLoading && tasks.length > 0) 
+  {
     <div class="list-group">
 
-      @for (task of tasks; track task.id) {
-
+      @for (task of tasks; track task.id) 
+      {
         <div class="list-group-item">
 
-          @if (editingTaskId === task.id) {
-
+          @if (editingTaskId === task.id) 
+          {
             <app-task-edit-form
               [task]="task"
               (taskUpdated)="onTaskUpdated()"
               (cancelled)="cancelEdit()"
             ></app-task-edit-form>
 
-          } @else {
-
+          } 
+          @else 
+          {
             <div class="d-flex justify-content-between flex-wrap">
 
               <div class="flex-grow-1">
@@ -188,7 +185,8 @@
                   {{ task.title }}
                 </h5>
 
-                @if (task.description) {
+                @if (task.description) 
+                {
                   <p class="mb-1">
                     {{ task.description }}
                   </p>
@@ -196,27 +194,23 @@
 
                 <div class="task-meta">
 
-                  @if (task.categoryName) {
+                  @if (task.categoryName) 
+                  {
                     <span class="task-category">
                       {{ task.categoryName }}
                     </span>
                   }
 
-                  <!-- @if (task.dueDate) {
-                    <span class="task-due-date">
-                      Due: {{ task.dueDate | date:'medium' }}
-                    </span>
-                  } -->
-
-                  @if (task.dueDate) {
+                  @if (task.dueDate) 
+                  {
                     <span class="task-due-date" [class.task-due-date-overdue]="isOverdue(task)">
-                      
-                      @if (isOverdue(task)) {
+        
+                      @if (isOverdue(task)) 
+                      {
                         <i class="bi bi-exclamation-circle"></i>
                       }
 
                       Due: {{ task.dueDate | date:'medium' }}
-
                     </span>
                   }
 
@@ -235,9 +229,13 @@
                     [class.btn-outline-secondary]="!task.isCompleted"
                     (click)="toggleCompleted(task)"
                   >
-                    @if (task.isCompleted) {
-                      ✓ Completed
-                    } @else {
+                    @if (task.isCompleted) 
+                    {
+                      <i class="bi bi-check2 me-1"></i>
+                      Completed
+                    } 
+                    @else 
+                    {
                       Mark as completed
                     }
                   </button>
@@ -259,17 +257,11 @@
                 >
                   Delete
                 </button>
-
               </div>
-
             </div>
-
           }
-
         </div>
-
       }
-
     </div>
 
     <div class="tasks-bottom-bar">
@@ -291,7 +283,8 @@
         </select>
       </div>
 
-      @if (totalPages > 1) {
+      @if (totalPages > 1) 
+      {
 
         <nav class="pagination-bar">
 
@@ -313,20 +306,22 @@
               </button>
             </li>
 
-            @for (page of visiblePages; track $index) {
-
-              @if (page === '...') {
+            @for (page of visiblePages; track $index) 
+            {
+              @if (page === '...') 
+              {
                 <li class="page-item disabled">
                   <span class="page-link page-ellipsis">…</span>
                 </li>
-              } @else {
+              } 
+              @else 
+              {
                 <li class="page-item" [class.active]="page === pageNumber">
                   <button class="page-link" (click)="goToPage(page)">
                     {{ page }}
                   </button>
                 </li>
               }
-
             }
 
             <li class="page-item" [class.disabled]="pageNumber === totalPages">
@@ -340,19 +335,14 @@
                 »
               </button>
             </li>
-
           </ul>
-
         </nav>
-
       }
-
     </div>
-
   }
 
-  @if (taskToDelete) {
-
+  @if (taskToDelete) 
+  {
     <app-confirm-modal
       title="Delete Task"
       [message]="'Are you sure you want to delete &quot;' + taskToDelete.title + '&quot;?'"
@@ -360,7 +350,5 @@
       (confirmed)="confirmDeleteTask()"
       (cancelled)="taskToDelete = null"
     ></app-confirm-modal>
-
   }
-
 </div>

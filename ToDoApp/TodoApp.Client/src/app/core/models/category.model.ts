@@ -1,12 +1,15 @@
-export interface CategoryResponse {
+export interface CategoryResponse 
+{
   id: number;
   name: string;
 }
 
-export interface CreateCategoryRequest {
+export interface CreateCategoryRequest 
+{
   name: string;
 }
 
-export interface UpdateCategoryRequest {
+export interface UpdateCategoryRequest 
+{
   name: string;
 }
