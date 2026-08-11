@@ -91,6 +91,69 @@ Make sure you have the following installed:
 * [Angular CLI](https://angular.dev/tools/cli)
 * [Microsoft SQL Server (used by the application)](https://www.microsoft.com/en-us/sql-server)
 
+> **Note:** SQL Server Express is sufficient for running this project locally.
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repository.git
+cd your-repository
+```
+
+### 2. Configure the database
+
+Update the connection string in the backend configuration:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "your-connection-string"
+}
+```
+
+Make sure your SQL Server instance is running.
+
+### 3. Apply database migrations
+
+Navigate to the backend project directory and run:
+
+```bash
+dotnet ef database update
+```
+
+This will create the required database and apply all Entity Framework Core migrations.
+
+### 4. Run the backend
+
+From the backend project directory, run:
+
+```bash
+dotnet run
+```
+
+The API will start on the configured local URL.
+
+### 5. Run the frontend
+
+Open a new terminal and navigate to the Angular project:
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+
+The application will be available at:
+
+```text
+http://localhost:4200
+```
+
+### 6. Create an account
+
+Open the application in your browser and register a new account.
+
+After logging in, you can create and manage tasks and categories.
+
 ## API
 The backend provides RESTful endpoints for authentication, tasks and categories
 
