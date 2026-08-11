@@ -131,6 +131,7 @@ This will create the required database and apply all Entity Framework Core migra
 From the backend project directory, run:
 
 ```bash
+cd <repository-root>/ToDoApp/ToDoApp.API
 dotnet run
 ```
 
