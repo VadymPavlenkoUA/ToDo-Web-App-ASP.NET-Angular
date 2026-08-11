@@ -132,7 +132,8 @@ From the backend project directory, run:
 
 ```bash
 cd <repository-root>\ToDoApp\ToDoApp.API
-dotnet run
+dotnet dev-certs https --trust
+dotnet run --launch-profile https
 ```
 
 The API will start on the configured local URL.
