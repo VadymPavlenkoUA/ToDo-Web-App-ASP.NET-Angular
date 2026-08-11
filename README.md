@@ -96,13 +96,13 @@ Make sure you have the following installed:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repository.git
+git clone [https://github.com/your-username/your-repository.git](https://github.com/VadymPavlenkoUA/ToDo-Web-App-ASP.NET-Angular.git)
 cd your-repository
 ```
 
 ### 2. Configure the database
 
-Update the connection string in the backend configuration:
+Update the connection string in the backend configuration (*appsettings.json*):
 
 ```json
 "ConnectionStrings": {
