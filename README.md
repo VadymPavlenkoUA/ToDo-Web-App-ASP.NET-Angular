@@ -72,3 +72,23 @@ This is a full-stack task management application which allows users to manage pe
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6d9fc847-d7a2-4654-8f46-d926f98d04f2" />
 
 *Screenshots demonstrate the main application pages and user interface*
+
+## API
+
+### Authentication
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+
+### Tasks
+- `GET /api/tasks`
+- `GET /api/tasks/{id}`
+- `POST /api/tasks`
+- `PUT /api/tasks/{id}`
+- `DELETE /api/tasks/{id}`
+
+### Categories
+- `GET /api/categories`
+- `GET /api/categories/{id}`
+- `POST /api/categories`
+- `PUT /api/categories/{id}`
+- `DELETE /api/categories/{id}`
