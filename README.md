@@ -83,6 +83,9 @@ This is a full-stack task management application which allows users to manage pe
 
 *Screenshots demonstrate the main application pages and user interface*
 
+## Getting Started
+
+
 ## API
 The backend provides RESTful endpoints for authentication, tasks and categories
 
