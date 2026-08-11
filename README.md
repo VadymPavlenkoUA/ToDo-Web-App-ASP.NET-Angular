@@ -1,8 +1,9 @@
 # ToDo Web Application
+
+## This is a full-stack task management application which allows users to manage personal tasks, organize them into categories, search and filter tasks, and securely authenticate using JWT.
+
 ### C#/.NET, ASP.NET Core, Entity Framework, MS SQL Server, REST API, Angular, TypeScript, Bootstrap, HTML/CSS
 *(4-layer architecture, Dependency Injection, JWT Authentication, Repository Pattern, DTOs)*
-
-### This is a full-stack task management application which allows users to manage personal tasks, organize them into categories, search and filter tasks, and securely authenticate using JWT.
 
 ## Key Features
 * User Authentication
