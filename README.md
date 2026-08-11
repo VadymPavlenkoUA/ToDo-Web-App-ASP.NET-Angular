@@ -99,7 +99,7 @@ Make sure you have the following installed:
 
 ```bash
 git clone https://github.com/VadymPavlenkoUA/ToDo-Web-App-ASP.NET-Angular.git
-cd <repository-root>\ToDoApp
+cd ToDo-Web-App-ASP.NET-Angular\ToDoApp
 ```
 
 ### 2. Configure the database
@@ -119,7 +119,8 @@ Make sure your SQL Server instance is running.
 Navigate to the backend project directory and run:
 
 ```bash
-cd <repository-root>\ToDoApp
+cd ToDo-Web-App-ASP.NET-Angular\ToDoApp
+dotnet restore
 dotnet tool install --global dotnet-ef
 dotnet ef database update --project TodoApp.DataAccess --startup-project TodoApp.API
 ```
@@ -131,7 +132,7 @@ This will create the required database and apply all Entity Framework Core migra
 From the backend project directory, run:
 
 ```bash
-cd <repository-root>\ToDoApp\ToDoApp.API
+cd ToDo-Web-App-ASP.NET-Angular\ToDoApp\ToDoApp.API
 dotnet dev-certs https --trust
 dotnet run --launch-profile https
 ```
@@ -143,7 +144,7 @@ The API will start on the configured local URL.
 Open a new terminal and navigate to the Angular project:
 
 ```bash
-cd <repository-root>\ToDoApp\TodoApp.Client
+cd ToDo-Web-App-ASP.NET-Angular\ToDoApp\TodoApp.Client
 npm install
 ng serve
 ```
