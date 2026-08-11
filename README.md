@@ -61,15 +61,25 @@ This is a full-stack task management application which allows users to manage pe
 
 ## Screenshots
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/93025ede-0bd4-4de9-a649-a3ead2ac473a" />
+### Login
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/4ffdc611-d224-496b-a4c7-61f249356fac" />
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/854ae05c-fe06-44de-a44f-b50b04bca700" />
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6df99131-c0f3-45e2-bca7-1211dfe4047c" />
+### Registration
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/3a0203c9-213d-4c5d-9d3b-f604a63c355f" />
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/c27b2cda-324a-4df1-98f4-16366df343c0" />
 
-<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6d9fc847-d7a2-4654-8f46-d926f98d04f2" />
+### Tasks
+
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6cea0b00-7147-42c2-9578-203bd90d884d" />
+
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/ec93fdf7-4a30-4ac4-ba25-a75422e4303f" />
+
+### Categories
+
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6fe177a3-3652-457a-91c2-e61587d917c3" />
+
+<img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/656caf52-177b-4d11-9bf7-4a9a7f054dc4" />
 
 *Screenshots demonstrate the main application pages and user interface*
 
