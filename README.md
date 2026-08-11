@@ -119,6 +119,8 @@ Make sure your SQL Server instance is running.
 Navigate to the backend project directory and run:
 
 ```bash
+cd <repository-root>/ToDoApp/ToDoApp.API
+dotnet tool install --global dotnet-ef
 dotnet ef database update
 ```
 
