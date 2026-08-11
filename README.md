@@ -59,7 +59,7 @@ This is a full-stack task management application which allows users to manage pe
 * Bootstrap
 
 
-## IN PROGRESS
+## Screenshots
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/93025ede-0bd4-4de9-a649-a3ead2ac473a" />
 
@@ -70,3 +70,5 @@ This is a full-stack task management application which allows users to manage pe
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/3a0203c9-213d-4c5d-9d3b-f604a63c355f" />
 
 <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6d9fc847-d7a2-4654-8f46-d926f98d04f2" />
+
+*Screenshots demonstrate the main application pages and user interface*
