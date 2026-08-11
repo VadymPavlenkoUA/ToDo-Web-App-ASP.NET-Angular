@@ -1,39 +1,62 @@
 # ToDo Web Application
-
-## This is a full-stack task management application which allows users to manage personal tasks, organize them into categories, search and filter tasks, and securely authenticate using JWT.
-
 ### C#/.NET, ASP.NET Core, Entity Framework, MS SQL Server, REST API, Angular, TypeScript, Bootstrap, HTML/CSS
 *(4-layer architecture, Dependency Injection, JWT Authentication, Repository Pattern, DTOs)*
+
+This is a full-stack task management application which allows users to manage personal tasks, organize them into categories, search and filter tasks, and securely authenticate using JWT.
 
 ## Key Features
 * User Authentication
   * User registration and login
   * JWT-based authentication
   * Protected API endpoints
+  * Password hashing with ASP.NET Core Identity
 * Task Management
-  * Create tasks
-  * View tasks
-  * Edit tasks
-  * Delete tasks
+  * Create, view, edit and delete tasks
   * Mark tasks as completed
   * Set task descriptions and due dates
+  * Assign tasks to categories
+  * Visual indication of completed and overdue tasks
 * Categories
-  * Create and manage task categories
-  * Assign categories to tasks
+  * Create, edit and delete categories
+  * Assign tasks to categories
   * Filter tasks by category
 * Task Search & Filtering
   * Search tasks by title
   * Filter tasks by category
+  * Debounced search requests
 * Pagination
-  * Paginated task list
-  * Configurable page size
+  * Configurable number of tasks per page
+  * Previous/next navigation
+  * First/last page navigation
+  * Dynamic page number display
 * Responsive Interface
   * Clean and user-friendly UI
   * Responsive design using Bootstrap
+  * Loading indicators
+  * Validation messages
+  * Error handling
+  * Toast notifications
+  * Confirmation modals
 * Database Integration
   * SQL Server database
   * Entity Framework Core migrations
   * Relational data model for users, tasks, and categories
+
+## Technologies
+### Backend
+* C#
+* ASP.NET Core Web API
+* Entity Framework Core
+* Microsoft SQL Server
+* JWT Authentication
+* REST API
+* Dependency Injection
+
+## Frontend
+* Angular
+* TypeScript
+* HTML/CSS
+* Bootstrap
 
 
 ## IN PROGRESS
