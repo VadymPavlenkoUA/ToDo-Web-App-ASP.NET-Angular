@@ -83,6 +83,8 @@ This is a full-stack task management application which allows users to manage pe
 
 *Screenshots demonstrate the main application pages and user interface*
 
+---
+
 ## Getting Started
 ### Prerequisites
 Make sure you have the following installed:
@@ -153,6 +155,8 @@ http://localhost:4200
 Open the application in your browser and register a new account.
 
 After logging in, you can create and manage tasks and categories.
+
+---
 
 ## API
 The backend provides RESTful endpoints for authentication, tasks and categories
