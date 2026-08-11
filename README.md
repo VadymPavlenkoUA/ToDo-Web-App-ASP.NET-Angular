@@ -132,7 +132,7 @@ This will create the required database and apply all Entity Framework Core migra
 From the backend project directory, run:
 
 ```bash
-cd ToDo-Web-App-ASP.NET-Angular\ToDoApp\ToDoApp.API
+cd ToDoApp.API
 dotnet dev-certs https --trust
 dotnet run --launch-profile https
 ```
