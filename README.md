@@ -104,7 +104,7 @@ cd ToDo-Web-App-ASP.NET-Angular\ToDoApp
 
 ### 2. Configure the database
 
-Update the connection string in the backend configuration ***appsettings.json***:
+Update the connection string in the backend configuration ***ToDoApp/ToDoApp.API/appsettings.json***:
 
 ```json
 "ConnectionStrings": {
